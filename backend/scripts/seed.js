@@ -23,56 +23,6 @@ const categories = [
   },
 ];
 
-// Men's Body Mists: 7 images in backend/uploads/ — MB_1.jpg … MB_7.jpg (assign by order; swap to interchange).
-// Index → Product: 0: Sport Body Mist  1: Gym Fresh Mist  2: Daily Wear Mist  3: Office Ready Mist
-//  4: Fresh & Cool Mist  5: Arctic Breeze Mist  6: Urban Fresh Mist
-const MEN_BODY_MISTS_IMAGES = [
-  '/uploads/MB_1.jpg', '/uploads/MB_2.jpg', '/uploads/MB_3.jpg', '/uploads/MB_4.jpg',
-  '/uploads/MB_5.jpg', '/uploads/MB_6.jpg', '/uploads/MB_7.jpg',
-];
-
-// Men's Perfumes: 17 images in backend/uploads/ — MP_1.jpg … MP_17.jpg. Assign by order; swap entries to interchange.
-// Index → Product: 0: Classic Woody EDP  1: Citrus Fresh EDT  2: Midnight Oud EDP  3: Sandalwood & Cedar EDT
-//  4: Musk Intense EDP  5: Noir Musk EDT  6: Midnight Musk EDP  7: White Musk EDT  8: Fresh Citrus EDT
-//  9: Ocean Breeze EDT  10: Lime & Ginger EDP  11: Signature EDP  12: Executive EDT  13: Tobacco & Leather EDP
-// 14: Pine & Juniper EDP  15: Ice Cool EDT  16: Night Out EDP
-const MEN_PERFUMES_IMAGES = [
-  '/uploads/MP_1.jpg', '/uploads/MP_2.jpg', '/uploads/MP_3.jpg', '/uploads/MP_4.jpg',
-  '/uploads/MP_5.jpg', '/uploads/MP_6.jpg', '/uploads/MP_7.jpg', '/uploads/MP_8.jpg',
-  '/uploads/MP_9.jpg', '/uploads/MP_10.jpg', '/uploads/MP_11.jpg', '/uploads/MP_12.jpg',
-  '/uploads/MP_13.jpg', '/uploads/MP_14.jpg', '/uploads/MP_15.jpg', '/uploads/MP_16.jpg',
-  '/uploads/MP_17.jpg',
-];
-
-// Women's Perfumes: 26 images — assign by ORDER. To interchange images, SWAP two paths in this array.
-// Index → Product (same order as Women's Perfumes in sampleProducts below):
-//  0: Floral Dream EDP      1: Sweet Gourmand Parfum  2: Rose Garden EDP        3: Jasmine Nights EDP
-//  4: Peony Blush EDP       5: Violet & Iris EDP      6: Lily of the Valley EDP 7: Berry Bliss EDP
-//  8: Peach Paradise EDP     9: Apple Blossom EDP     10: Mango Tango EDP      11: Oriental Nights EDP
-// 12: Velvet Oud EDP       13: Spice Route EDP       14: Vanilla Dream EDP    15: Caramel Kiss EDP
-// 16: Chocolate Rose EDP   17: Honey & Almond EDP    18: Designer Icon EDP    19: Haute Couture EDP
-// 20: Signature Femme EDP  21: Velvet Rose EDP       22: Cherry Blossom EDP   23: Moonlight Oriental EDP
-// 24: Spiced Vanilla EDP   25: Golden Oud EDP
-const WOMEN_PERFUMES_IMAGES = [
-  '/uploads/WM_1.jpg', '/uploads/WM_2.jpg', '/uploads/WM_3.jpg', '/uploads/WM_4.png',
-  '/uploads/WM_5.jpg', '/uploads/WM_6.jpg', '/uploads/WM_7.jpg', '/uploads/WM_8.jpg',
-  '/uploads/WM_9.jpg', '/uploads/WM_10.jpg', '/uploads/WM_11.jpg', '/uploads/WM_12.jpg',
-  '/uploads/WM_13.jpg', '/uploads/WM_14.jpg', '/uploads/WM_15.jpg', '/uploads/WM_16.jpg',
-  '/uploads/WM_17.jpg', '/uploads/WM_18.jpg', '/uploads/WM_19.jpg', '/uploads/WM_20.jpg',
-  '/uploads/WM_26.jpg', '/uploads/WM_22.jpg', '/uploads/WM_23.jpg', '/uploads/WM_24.jpg',
-  '/uploads/WM_25.jpg', '/uploads/WM_21.jpg',
-];
-
-// Women's Body Mists: 10 images in backend/uploads/ — WB_1.jpg, WB_2.png, WB_3.jpg, WB_4.png, WB_5–10.jpg (swap to interchange).
-// Index → Product: 0: Everyday Floral Mist  1: Rose Water Mist  2: Lavender Calm Mist  3: Light Everyday Mist
-//  4: Morning Dew Mist  5: Sweet Vanilla Mist  6: Citrus Splash Mist  7: Coconut Dream Mist
-//  8: Peony Spray Mist  9: Tropical Escape Mist
-const WOMEN_BODY_MISTS_IMAGES = [
-  '/uploads/WB_1.jpg', '/uploads/WB_2.png', '/uploads/WB_3.jpg', '/uploads/WB_4.png',
-  '/uploads/WB_5.jpg', '/uploads/WB_6.jpg', '/uploads/WB_7.jpg', '/uploads/WB_8.jpg',
-  '/uploads/WB_9.jpg', '/uploads/WB_10.jpg',
-];
-
 // All products use images: [] — add files to backend/uploads/ and reference in DB later. Total: 60.
 const sampleProducts = [
   // ——— MEN'S PERFUMES (14) ———
@@ -128,6 +78,7 @@ const sampleProducts = [
   { title: 'Moonlight Oriental EDP', description: 'Night-time oriental. Sensual and deep.', price: 72.99, stock: 34, category: 'Women', subCategory: 'Perfumes', fragranceType: 'Oriental' },
   { title: 'Spiced Vanilla EDP', description: 'Vanilla with cinnamon and clove. Winter warmth.', price: 52.99, stock: 52, category: 'Women', subCategory: 'Perfumes', fragranceType: 'Sweet & Gourmand' },
   { title: 'Golden Oud EDP', description: 'Luxury oud with saffron and rose.', price: 108.99, stock: 18, category: 'Women', subCategory: 'Perfumes', fragranceType: 'Luxury Designer Scents' },
+  { title: 'Strawberry & Cream EDP', description: 'Sweet strawberry with creamy musk.', price: 43.99, stock: 70, category: 'Women', subCategory: 'Perfumes', fragranceType: 'Fruity' },
   // ——— WOMEN'S BODY MISTS (8) ———
   { title: 'Everyday Floral Mist', description: 'Light floral mist for a subtle, refreshing touch.', price: 12.99, stock: 120, category: 'Women', subCategory: 'Body Mists', fragranceType: 'Floral Mist Collection' },
   { title: 'Rose Water Mist', description: 'Delicate rose water spray. Hydrating and fragrant.', price: 13.99, stock: 100, category: 'Women', subCategory: 'Body Mists', fragranceType: 'Floral Mist Collection' },
@@ -178,39 +129,14 @@ async function seed() {
       console.log('Categories already exist.');
     }
 
-    const forceProducts = process.argv.includes('--force');
     const productCount = await Product.countDocuments();
-    if (productCount === 0 || forceProducts) {
-      if (forceProducts && productCount > 0) {
-        await Product.deleteMany({});
-        console.log('Cleared existing products.');
-      }
-      let menPerfumesImageIndex = 0;
-      let menBodyMistsImageIndex = 0;
-      let womenPerfumesImageIndex = 0;
-      let womenBodyMistsImageIndex = 0;
+    if (productCount === 0) {
       await Product.insertMany(
-        sampleProducts.map((p) => {
-          const isMenPerfume = p.category === 'Men' && p.subCategory === 'Perfumes';
-          const isMenBodyMist = p.category === 'Men' && p.subCategory === 'Body Mists';
-          const isWomenPerfume = p.category === 'Women' && p.subCategory === 'Perfumes';
-          const isWomenBodyMist = p.category === 'Women' && p.subCategory === 'Body Mists';
-          let images = [];
-          if (isMenPerfume && menPerfumesImageIndex < MEN_PERFUMES_IMAGES.length) {
-            images = [MEN_PERFUMES_IMAGES[menPerfumesImageIndex++]];
-          } else if (isMenBodyMist && menBodyMistsImageIndex < MEN_BODY_MISTS_IMAGES.length) {
-            images = [MEN_BODY_MISTS_IMAGES[menBodyMistsImageIndex++]];
-          } else if (isWomenPerfume && womenPerfumesImageIndex < WOMEN_PERFUMES_IMAGES.length) {
-            images = [WOMEN_PERFUMES_IMAGES[womenPerfumesImageIndex++]];
-          } else if (isWomenBodyMist && womenBodyMistsImageIndex < WOMEN_BODY_MISTS_IMAGES.length) {
-            images = [WOMEN_BODY_MISTS_IMAGES[womenBodyMistsImageIndex++]];
-          }
-          return { ...p, sellerId: seller._id, images };
-        })
+        sampleProducts.map((p) => ({ ...p, sellerId: seller._id, images: [] }))
       );
       console.log(`Seeded ${sampleProducts.length} products (images: [] — add files to backend/uploads/ and update DB later).`);
     } else {
-      console.log('Products already exist. To re-seed, run: npm run seed -- --force');
+      console.log('Products already exist. To re-seed the full catalog, clear the products collection and run seed again.');
     }
   } catch (err) {
     console.error('Seed error:', err);

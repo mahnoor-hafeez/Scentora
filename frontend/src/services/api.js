@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-// In production, set VITE_API_BASE_URL (e.g. https://your-app.onrender.com) — no trailing slash
-const API_BASE = import.meta.env.VITE_API_BASE_URL
-  ? `${import.meta.env.VITE_API_BASE_URL}/api`
-  : '/api';
+// In production, use Render API. Fallback so the app works even if Vercel env wasn't baked in.
+const PRODUCTION_API_BASE = 'https://scentora.onrender.com';
+const baseUrl = import.meta.env.VITE_API_BASE_URL || (import.meta.env.PROD ? PRODUCTION_API_BASE : '');
+const API_BASE = baseUrl ? `${String(baseUrl).replace(/\/$/, '')}/api` : '/api';
 
 const API = axios.create({
   baseURL: API_BASE,
@@ -15,8 +15,8 @@ const API = axios.create({
 export const getImageUrl = (path) => {
   if (!path) return '';
   if (path.startsWith('http')) return path;
-  const base = import.meta.env.VITE_API_BASE_URL || '';
-  return base ? `${base}${path.startsWith('/') ? path : '/' + path}` : path;
+  const base = import.meta.env.VITE_API_BASE_URL || (import.meta.env.PROD ? PRODUCTION_API_BASE : '');
+  return base ? `${String(base).replace(/\/$/, '')}${path.startsWith('/') ? path : '/' + path}` : path;
 };
 
 API.interceptors.request.use((config) => {

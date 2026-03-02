@@ -1,7 +1,11 @@
-# Scentora – Deploy in 3 Steps (First-Time Friendly)
+ Scentora – Deploy in 3 Steps (First-Time Friendly)
 
 Deploy the full MERN app with **MongoDB Atlas** (database), **Render** (backend), and **Vercel** (frontend). All have free tiers and no credit card needed for basic use.
-
+git add .
+git commit -m "Initial commit - Scentora MERN app"
+git branch -M main
+git remote add origin https://github.com/mahnoor-hafeez/Scentora.git
+git push -u origin main
 ---
 
 ## Before You Start
@@ -70,8 +74,9 @@ Deploy the full MERN app with **MongoDB Atlas** (database), **Render** (backend)
 
    | Key                   | Value |
    |-----------------------|--------|
-   | `VITE_API_BASE_URL`   | Your Render backend URL from Step 2, e.g. `https://scentora-api.onrender.com` (no trailing slash) |
+   | `VITE_API_BASE_URL`   | Your Render backend URL from Step 2, e.g. `https://scentora.onrender.com` (no trailing slash) |
 
+   **Important:** This variable is baked into the frontend at **build time**. If you add or change it later, you **must redeploy** (Deployments → Redeploy) so the new build includes it. Otherwise the site will call your own domain (`/api`) and show no data.
 5. Click **Deploy**. Wait for the build to finish.
 6. Copy your frontend URL, e.g. `https://scentora-xxx.vercel.app`.
 
@@ -116,3 +121,5 @@ Deploy the full MERN app with **MongoDB Atlas** (database), **Render** (backend)
 **Frontend env:** `VITE_API_BASE_URL`
 
 That’s it. You now have Scentora running on the internet.
+
+
