@@ -38,9 +38,13 @@ app.use('/api/admin', adminRoutes);
 app.get('/api/health', (req, res) => res.json({ status: 'ok', message: 'Scentora API running' }));
 
 // MongoDB connection
+const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/scentora';
+console.log('Connecting to MongoDB...');
 mongoose
-  .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/scentora')
+  .connect(mongoUri)
   .then(() => console.log('MongoDB connected'))
-  .catch((err) => console.error('MongoDB connection error:', err));
+  .catch((err) => {
+    console.error('MongoDB connection error:', err.message);
+  });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
