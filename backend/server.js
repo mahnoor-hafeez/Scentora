@@ -37,18 +37,15 @@ app.use('/api/admin', adminRoutes);
 // Health check
 app.get('/api/health', (req, res) => res.json({ status: 'ok', message: 'Scentora API running' }));
 
-// MongoDB connection – longer timeouts for Atlas from Render (free tier can be slow)
+// MongoDB connection – no custom timeouts so we see the real connection error if it fails
 const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/scentora';
-mongoose.set('bufferTimeoutMS', 30000);
 console.log('Connecting to MongoDB...');
 mongoose
-  .connect(mongoUri, {
-    serverSelectionTimeoutMS: 30000,
-    connectTimeoutMS: 30000,
-  })
+  .connect(mongoUri)
   .then(() => console.log('MongoDB connected'))
   .catch((err) => {
     console.error('MongoDB connection error:', err.message);
+    console.error('Full error:', err.toString());
   });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
