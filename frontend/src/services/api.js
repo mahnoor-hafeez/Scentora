@@ -1,8 +1,9 @@
 import axios from 'axios';
 
-// In production, use Render API. Fallback so the app works even if Vercel env wasn't baked in.
+// Use Render API when not on localhost (so it works on Vercel no matter how the build was done).
 const PRODUCTION_API_BASE = 'https://scentora.onrender.com';
-const baseUrl = import.meta.env.VITE_API_BASE_URL || (import.meta.env.PROD ? PRODUCTION_API_BASE : '');
+const isLocalhost = typeof window !== 'undefined' && /localhost|127\.0\.0\.1/.test(window.location.hostname);
+const baseUrl = isLocalhost ? (import.meta.env.VITE_API_BASE_URL || '') : (import.meta.env.VITE_API_BASE_URL || PRODUCTION_API_BASE);
 const API_BASE = baseUrl ? `${String(baseUrl).replace(/\/$/, '')}/api` : '/api';
 
 const API = axios.create({
@@ -15,7 +16,7 @@ const API = axios.create({
 export const getImageUrl = (path) => {
   if (!path) return '';
   if (path.startsWith('http')) return path;
-  const base = import.meta.env.VITE_API_BASE_URL || (import.meta.env.PROD ? PRODUCTION_API_BASE : '');
+  const base = isLocalhost ? (import.meta.env.VITE_API_BASE_URL || '') : (import.meta.env.VITE_API_BASE_URL || PRODUCTION_API_BASE);
   return base ? `${String(base).replace(/\/$/, '')}${path.startsWith('/') ? path : '/' + path}` : path;
 };
 
